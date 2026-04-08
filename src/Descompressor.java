@@ -28,14 +28,14 @@ public class Descompressor {
         try (DataInputStream dis = new DataInputStream(
                 new BufferedInputStream(new FileInputStream(caminhoEntrada)))) {
 
-            // ── PASSO 1: Ler cabeçalho ─────────────────────────────────────
+            // PASSO 1: Ler cabeçalho
             int[] frequencias = new int[TAMANHO_ASCII];
             for (int i = 0; i < TAMANHO_ASCII; i++) {
                 frequencias[i] = dis.readInt();
             }
             long totalBits = dis.readLong();
 
-            // ── PASSO 2: Reconstruir a Árvore de Huffman ───────────────────
+            // PASSO 2: Reconstruir a Árvore de Huffman
             ArvoreHuffman arvore = new ArvoreHuffman(frequencias);
             No raiz = arvore.getRaiz();
 
@@ -43,7 +43,7 @@ public class Descompressor {
                 throw new IOException("Arquivo corrompido: nao foi possivel reconstruir a arvore.");
             }
 
-            // ── PASSO 3: Decodificar os bits usando percurso guiado ─────────
+            // PASSO 3: Decodificar os bits usando percurso guiado
             try (BufferedOutputStream bos = new BufferedOutputStream(
                     new FileOutputStream(caminhoSaida))) {
 
