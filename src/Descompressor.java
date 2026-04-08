@@ -78,7 +78,7 @@ public class Descompressor {
         }
 
         long fimTempo = System.nanoTime();
-        long tempoMs = (fimTempo - inicioTempo) / 1_000_000;
+        long tempoMs = (fimTempo - inicioTempo) / 1000000;
 
         // Exibe resumo
         long bytesRestaurados = new File(caminhoSaida).length();

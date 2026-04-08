@@ -47,7 +47,7 @@ public class MinHeap {
         }
 
         // Troca raiz com o último elemento
-        trocar(0, heap.size() - 1);
+        troca(0, heap.size() - 1);
 
         // Remove o último elemento (que era a raiz = mínimo)
         No minimo = heap.remove(heap.size() - 1);
@@ -78,7 +78,7 @@ public class MinHeap {
 
             // Se o elemento atual for menor que o pai, troca
             if (heap.get(indiceAtual).compareTo(heap.get(indicePai)) < 0) {
-                trocar(indiceAtual, indicePai);
+                troca(indiceAtual, indicePai);
                 indiceAtual = indicePai;
             } else {
                 break; // Propriedade do heap restaurada
@@ -111,7 +111,7 @@ public class MinHeap {
 
             // Se o menor não é o pai, troca e continua descendo
             if (indiceMenor != indice) {
-                trocar(indice, indiceMenor);
+                troca(indice, indiceMenor);
                 indice = indiceMenor;
             } else {
                 break; // Propriedade do heap restaurada
@@ -120,7 +120,7 @@ public class MinHeap {
     }
 
    // Troca dois elementos no vetor do heap através dos índices
-    private void trocar(int i, int j) {
+    private void troca(int i, int j) {
         No temp = heap.get(i);
         heap.set(i, heap.get(j));
         heap.set(j, temp);
