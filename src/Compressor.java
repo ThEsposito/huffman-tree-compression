@@ -28,8 +28,15 @@ public class Compressor {
         int[] frequencias = analisarFrequencias(caminhoEntrada);
         imprimirFrequencias(frequencias);
 
-        // 2: Construir Min-Heap inicial para exibição
-        MinHeap heapExibicao = construirHeapParaExibicao(frequencias);
+        // Construir Min-Heap inicial para exibição
+        // (A árvore real é construída dentro de ArvoreHuffman.)
+        MinHeap heapExibicao = new MinHeap();
+        for (int i = 0; i < TAMANHO_ASCII; i++) {
+            if (frequencias[i] > 0) {
+                heapExibicao.inserir(new No((char) i, frequencias[i]));
+            }
+        }
+
         System.out.println("--------------------------------------------------");
         System.out.println("ETAPA 2: Min-Heap Inicial (Vetor)");
         System.out.println("--------------------------------------------------");
@@ -87,17 +94,6 @@ public class Compressor {
         return frequencias;
     }
 
-    // Constrói um Min-Heap apenas para exibição do estado inicial.
-    // (A árvore real é construída dentro de ArvoreHuffman.)
-    private MinHeap construirHeapParaExibicao(int[] frequencias) {
-        MinHeap heap = new MinHeap();
-        for (int i = 0; i < TAMANHO_ASCII; i++) {
-            if (frequencias[i] > 0) {
-                heap.inserir(new No((char) i, frequencias[i]));
-            }
-        }
-        return heap;
-    }
 
     // Grava o arquivo comprimido com cabeçalho e dados.
     // Retorna o total de bits de dados escritos (sem o cabeçalho).
