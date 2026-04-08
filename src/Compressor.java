@@ -36,16 +36,16 @@ public class Compressor {
         System.out.println(heapExibicao);
         System.out.println();
 
-        // ── PASSO 3: Construir a Árvore de Huffman ───────────────────────────
+        // 3: Construir a Árvore de Huffman ───────────────────────────
         ArvoreHuffman arvore = new ArvoreHuffman(frequencias);
         arvore.imprimirArvore();
         System.out.println();
 
-        // ── PASSO 4: Exibir tabela de códigos ────────────────────────────────
+        // 4: Exibir tabela de códigos ────────────────────────────────
         String[] codigos = arvore.getTabelaCodigos();
         imprimirTabelaCodigos(codigos);
 
-        // ── PASSO 5: Codificar e escrever arquivo ────────────────────────────
+        // 5: Codificar e escrever arquivo ────────────────────────────
         long totalBitsEscritos = escreverArquivoComprimido(
                 caminhoEntrada, caminhaSaida, frequencias, codigos);
 
@@ -207,3 +207,6 @@ public class Compressor {
         System.out.println();
     }
 }
+
+
+// Referência usada: https://medium.com/javarevisited/fileinputstream-and-fileoutputstream-in-java-a-guide-to-reading-and-writing-files-f46cb8a648a3

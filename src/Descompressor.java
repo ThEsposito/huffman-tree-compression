@@ -82,12 +82,9 @@ public class Descompressor {
 
         // Exibe resumo
         long bytesRestaurados = new File(caminhoSaida).length();
-        System.out.println("--------------------------------------------------");
         System.out.println("DESCOMPRESSAO CONCLUIDA");
-        System.out.println("--------------------------------------------------");
         System.out.printf("Arquivo restaurado..: %s%n", caminhoSaida);
         System.out.printf("Tamanho restaurado..: %d bytes%n", bytesRestaurados);
         System.out.printf("Tempo de execucao...: %d ms%n", tempoMs);
-        System.out.println("--------------------------------------------------");
     }
 }

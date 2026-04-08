@@ -87,9 +87,7 @@ public class ArvoreHuffman {
 
     // Imprime a árvore de Huffman em pré-ordem
     public void imprimirArvore() {
-        System.out.println("--------------------------------------------------");
         System.out.println("ETAPA 3: Arvore de Huffman");
-        System.out.println("--------------------------------------------------");
         imprimirArvoreRecursivo(raiz, 0);
     }
 
