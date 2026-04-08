@@ -16,8 +16,6 @@ reconstruir exatamente a mesma árvore de Huffman. O total de bits é necessári
 para saber quando parar de ler (o último byte pode ter bits de padding).
 */
 public class Compressor {
-
-    // Tamanho da tabela ASCII
     private static final int TAMANHO_ASCII = 256;
 
     // Comprime o arquivo de entrada e grava o resultado no arquivo de saída.
@@ -43,23 +41,23 @@ public class Compressor {
         System.out.println(heapExibicao);
         System.out.println();
 
-        // 3: Construir a Árvore de Huffman ───────────────────────────
+        // 3: Construir a Árvore de Huffman
         ArvoreHuffman arvore = new ArvoreHuffman(frequencias);
         arvore.imprimirArvore();
         System.out.println();
 
-        // 4: Exibir tabela de códigos ────────────────────────────────
+        // 4: Exibir tabela de códigos
         String[] codigos = arvore.getTabelaCodigos();
         imprimirTabelaCodigos(codigos);
 
-        // 5: Codificar e escrever arquivo ────────────────────────────
+        // 5: Codificar e escrever arquivo
         long totalBitsEscritos = escreverArquivoComprimido(
                 caminhoEntrada, caminhaSaida, frequencias, codigos);
 
         long fimTempo = System.nanoTime();
         long tempoMs = (fimTempo - inicioTempo) / 1_000_000;
 
-        // ── ETAPA 5: Resumo da compressão ────────────────────────────────────
+        // 5: Resumo da compressão
         File arquivoOriginal = new File(caminhoEntrada);
         long bytesOriginais = arquivoOriginal.length();
         long bitsOriginais = bytesOriginais * 8;
